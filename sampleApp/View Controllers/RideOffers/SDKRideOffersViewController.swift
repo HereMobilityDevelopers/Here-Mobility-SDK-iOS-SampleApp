@@ -43,7 +43,7 @@ extension RideOffersViewController{
 
             if let error = error{
                 switch error.code{
-                case HereSDKNetworkError.phoneVerificationErr.rawValue:
+                case HereSDKNetworkError.phoneNotVerified.rawValue:
                     strongSelf.handlePhoneNotVerifiedError()
                     break
                 default:

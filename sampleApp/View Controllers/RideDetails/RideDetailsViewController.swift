@@ -94,11 +94,15 @@ class RideDetailsViewController: UITableViewController {
 
 extension RideDetailsViewController : RideDetailsSwitchCellDelegate{
     func state(of rideDetailsSwitchCell: RideDetailsSwitchCell, is on: Bool) {
+
+        guard let originGeocodeResult = self.originGeocodeResult else { return }
+
         if (rideDetailsSwitchCell == bookNowCell && !on){
             let alert = UIAlertController(title: "Choose date & time", message: "\n\n\n\n\n\n\n\n\n\n", preferredStyle: .alert)
             alert.isModalInPopover = true
 
-            prebookRideDatePickerView.minimumDate = Date().addingTimeInterval(40 * 60)
+            let minimumPrebookTime = TimeInterval(30 * 60) //Must be at least 30 minutes from now.
+            prebookRideDatePickerView.minimumDate = Date().addingTimeInterval(minimumPrebookTime)
             alert.view.addSubview(prebookRideDatePickerView)
 
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { [weak self] (UIAlertAction) in
@@ -107,7 +111,15 @@ extension RideDetailsViewController : RideDetailsSwitchCellDelegate{
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] (UIAlertAction) in
                 self?.prebookRideDate = self?.prebookRideDatePickerView.date
             }))
-            self.present(alert,animated: true, completion: nil )
+
+            // It's important to calculate the pre-book time by using the correct pickup TimeZone to prevent mismatch TimeZone, Use HereSDKTimeZoneService to resolve the pickup timezone.
+            HereSDKTimeZoneService()
+                .timeZone(at: CLLocationCoordinate2D(latitude: originGeocodeResult.center.latitude,
+                                                     longitude: originGeocodeResult.center.longitude))
+                { [weak self] (response, error) in
+                    self?.prebookRideDatePickerView.timeZone = response?.timeZone
+                    self?.present(alert,animated: true, completion: nil )
+            }
         }
     }
 }
