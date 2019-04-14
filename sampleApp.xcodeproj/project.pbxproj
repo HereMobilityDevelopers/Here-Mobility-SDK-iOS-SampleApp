@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		292D9AAC225B777400F9F8ED /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D9AAB225B777400F9F8ED /* LaunchScreenViewController.swift */; };
 		91D1B3A021329980003DFB17 /* RideStatusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D1B39F21329980003DFB17 /* RideStatusService.swift */; };
 		91D1B3A221329A26003DFB17 /* SDKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D1B3A121329A26003DFB17 /* SDKService.swift */; };
 		F2639FBA20A8857200700381 /* FutureRideOffersViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2639FB920A8857200700381 /* FutureRideOffersViewControllers.swift */; };
@@ -49,20 +50,10 @@
 		FD6E21AD232E3FAF9136039F /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		FF4C168B20E28AAB002B29C2 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C168A20E28AAB002B29C2 /* UIViewControllerExtensions.swift */; };
 		FF4C168D20E28C7D002B29C2 /* HereSDKDemandCancellationInfo+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C168C20E28C7D002B29C2 /* HereSDKDemandCancellationInfo+Additions.swift */; };
-		FF705EDC20A0AA8200774BB5 /* sampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF705EDB20A0AA8200774BB5 /* sampleAppTests.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		FF705EDE20A0AA8200774BB5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F2D1C3E2208E17B7003388A2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F2D1C3E9208E17B7003388A2;
-			remoteInfo = sampleApp;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		292D9AAB225B777400F9F8ED /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		91D1B39F21329980003DFB17 /* RideStatusService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RideStatusService.swift; sourceTree = "<group>"; };
 		91D1B3A121329A26003DFB17 /* SDKService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKService.swift; sourceTree = "<group>"; };
 		F2639FB920A8857200700381 /* FutureRideOffersViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureRideOffersViewControllers.swift; sourceTree = "<group>"; };
@@ -108,7 +99,6 @@
 		F2F92C0720A341B3008EA19D /* RideDetailsSectionHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RideDetailsSectionHeaderCell.swift; sourceTree = "<group>"; };
 		FF4C168A20E28AAB002B29C2 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		FF4C168C20E28C7D002B29C2 /* HereSDKDemandCancellationInfo+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HereSDKDemandCancellationInfo+Additions.swift"; sourceTree = "<group>"; };
-		FF705EDB20A0AA8200774BB5 /* sampleAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sampleAppTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +113,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3711734C094D0F0C3A3ECD74 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		F2639FB820A8852700700381 /* Future Rides */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				F2D1C3EC208E17B7003388A2 /* sampleApp */,
+				3711734C094D0F0C3A3ECD74 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -197,6 +195,7 @@
 				F2D1C3F6208E17B7003388A2 /* LaunchScreen.storyboard */,
 				F2D1C3F9208E17B7003388A2 /* Info.plist */,
 				F2C63C6120A1C9490039A311 /* sampleApp-Bridging-Header.h */,
+				292D9AAB225B777400F9F8ED /* LaunchScreenViewController.swift */,
 			);
 			path = sampleApp;
 			sourceTree = "<group>";
@@ -343,6 +342,7 @@
 				Base,
 			);
 			mainGroup = F2D1C3E1208E17B7003388A2;
+			productRefGroup = 3711734C094D0F0C3A3ECD74 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -427,6 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				292D9AAC225B777400F9F8ED /* LaunchScreenViewController.swift in Sources */,
 				F2DA4FE3219F2B850079A09C /* AuthorizationViewController.swift in Sources */,
 				F2D1C4222090C744003388A2 /* RideDetailsViewController.swift in Sources */,
 				F2F92C0B20A341B3008EA19D /* RideDetailsTextFieldCell.swift in Sources */,
@@ -625,42 +626,6 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "sampleApp/sampleApp-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		FF705EE120A0AA8200774BB5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				INFOPLIST_FILE = sampleAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-.sampleAppTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sampleApp.app/sampleApp";
-			};
-			name = Debug;
-		};
-		FF705EE220A0AA8200774BB5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				INFOPLIST_FILE = sampleAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-.sampleAppTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sampleApp.app/sampleApp";
 			};
 			name = Release;
 		};

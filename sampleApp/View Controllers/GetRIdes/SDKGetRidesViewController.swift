@@ -8,19 +8,10 @@ import HereSDKDemandKit
 
 class SDKGetRidesViewController: GetRidesViewController {
 
-    lazy private var isPhoneNumberVerified : Bool = {
-        if let phoneNumberVerified = HereSDKManager.shared?.isPhoneNumberVerified(), phoneNumberVerified == true{
-            return true
-        }
-        return false
-    }()
+    private(set) var isPhoneNumberVerified = HereSDKManager.shared?.isUserVerified() ?? false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        guard let _ = HereSDKManager.shared?.user else {
-            return
-        }
 
         // optional - if not specified default coordinate is Berlin
         self.mapView.centerCoordinate = GetRidesViewController.londonCoordinate
@@ -55,16 +46,18 @@ extension GetRidesViewController {
 
     func getRides(){
         HereSDKDemandManager.shared.getRides(getHereSDKDemandRideQuery()) { [weak self] (result, error ) in
-            if (error == nil){
-                if result.ridesArray.count > 0{
-                    print("Got \(result.ridesArray.count) rides from getRides")
-                    self?.prebookedRides = result.ridesArray
-                    self?.showFutureRidesButton.isHidden = false
-                }
-                else{
-                    print("Got 0 rides from getRides")
-                    self?.showFutureRidesButton.isHidden = true
-                }
+            guard let result = result else {
+                print("No result found")
+                return
+            }
+            if result.ridesArray.count > 0{
+                print("Got \(result.ridesArray.count) rides from getRides")
+                self?.prebookedRides = result.ridesArray
+                self?.showFutureRidesButton.isHidden = false
+            }
+            else{
+                print("Got 0 rides from getRides")
+                self?.showFutureRidesButton.isHidden = true
             }
         }
     }

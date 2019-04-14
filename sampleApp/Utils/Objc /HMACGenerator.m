@@ -3,15 +3,14 @@
 
 @implementation HMACGenerator
 
-+ (NSString *)hmacSHA256From:(NSString*)appKey userId:(NSString *)userId expiration:(int32_t)expiration withKey:(NSString *)key;
+ + (NSString *)hmacSHA384From:(NSString*)appKey creationTimeSec:(int32_t)creationTimeSec withKey:(NSString *)key;
 {
     NSString *appKey64 = [HMACGenerator base64forData:[appKey dataUsingEncoding:NSUTF8StringEncoding]];
-    NSString *userId64 = [HMACGenerator base64forData:[userId dataUsingEncoding:NSUTF8StringEncoding]];
-    NSString *exp = [NSString stringWithFormat:@"%d",expiration];
+    NSString *creation = [NSString stringWithFormat:@"%d",creationTimeSec];
 
-    NSString *data = [NSString stringWithFormat:@"%@.%@.%@",appKey64,userId64,exp];
+    NSString *data = [NSString stringWithFormat:@"%@.%@",appKey64,creation];
 
-    NSData *hash = [HMACGenerator hmacSHA256:data withKey:key];
+    NSData *hash = [HMACGenerator hmacSHA384:data withKey:key];
 
     NSString *hashStr = hash.description;
     NSCharacterSet *trim = [NSCharacterSet characterSetWithCharactersInString:@"<> "];
@@ -21,12 +20,12 @@
 }
 
 
-+ (NSData*)hmacSHA256:(NSString*)data withKey:(NSString *)key
+ + (NSData *)hmacSHA384:(NSString*)data withKey:(NSString *)key
 {
     const char *cKey = [key cStringUsingEncoding:NSASCIIStringEncoding];
     const char *cData = [data cStringUsingEncoding:NSASCIIStringEncoding];
-    unsigned char cHMAC[CC_SHA256_DIGEST_LENGTH];
-    CCHmac(kCCHmacAlgSHA256, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
+    unsigned char cHMAC[CC_SHA384_DIGEST_LENGTH];
+    CCHmac(kCCHmacAlgSHA384, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
     NSData *hash = [[NSData alloc] initWithBytes:cHMAC length:sizeof(cHMAC)];
     return hash;
 }

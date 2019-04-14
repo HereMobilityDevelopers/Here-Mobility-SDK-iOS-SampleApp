@@ -125,15 +125,15 @@ class RideStatusViewController: UIViewController {
     }
 
     internal func updateUI(for demandLocation: HereSDKDemandRideLocation){
-        if let lastupdateStatus = self.statussesArray.first?.currentStatus.rawValue{
+        if let lastupdateStatus = self.statussesArray.first?.currentStatus.rawValue {
             if (lastupdateStatus >= 4 && lastupdateStatus <= 7){ // driver assigned <-> driver at pickup point
-                if let pickupTime = demandLocation.estimatedPickupTime{
-                    tripETA.text = pickupTime.justTime
+                if let pickupTimeSec = demandLocation.estimatedPickupTimeSeconds?.doubleValue {
+                    tripETA.text = Date.init(timeIntervalSinceNow: pickupTimeSec).justTime
                 }
             }
             if (lastupdateStatus == 8){ // driver
-                if let dropOffTime = demandLocation.estimatedDropoffTime{
-                    tripETA.text = dropOffTime.justTime
+                if let dropOffTimeSec = demandLocation.estimatedDropOffTimeSeconds?.doubleValue {
+                    tripETA.text = Date.init(timeIntervalSinceNow: dropOffTimeSec).justTime
                 }
             }
         }

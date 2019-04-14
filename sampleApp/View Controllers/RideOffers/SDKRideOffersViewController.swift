@@ -35,7 +35,7 @@ extension RideOffersViewController{
         // passenger details from RideDetailsViewController
         guard let passengerDetails = self.passengerDetails else {return}
         // create request with passenger details and offerId
-        let demandRideRequest = HereSDKDemandRideRequest(offerId: rideOffer.offerId,
+        let demandRideRequest = HereSDKDemandRideRequest(offer: rideOffer,
                                                          passengerDetails: passengerDetails)
 
         HereSDKDemandManager.shared.createRide(with: demandRideRequest) { [weak self] ride, error in
@@ -71,7 +71,6 @@ extension RideOffersViewController{
             let authorizationViewController : AuthorizationViewController = storyboard.instantiateViewController(withIdentifier: "AuthorizationViewController") as! AuthorizationViewController
 
             authorizationViewController.shouldHideNextButton = true
-            authorizationViewController.shouldHideLoginView = true
             authorizationViewController.shouldHideVerificationView = false
 
             self.navigationController?.show(authorizationViewController, sender: self)

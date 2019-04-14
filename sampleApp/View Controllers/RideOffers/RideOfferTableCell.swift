@@ -53,7 +53,11 @@ class RideOfferTableCell: BaseRideTableViewCell {
         if let _logoURL = offer.supplier.logoURL {
             supplierImage.setImage(url: URL(string: _logoURL))
         }
-        offerETALabel.text = offer.estimatedPickupTime?.justTime ?? "N/A"
+        if let estimatedPickupTimeSeconds = offer.estimatedPickupTimeSeconds?.doubleValue {
+            offerETALabel.text = Date(timeIntervalSinceNow: estimatedPickupTimeSeconds).justTime
+        } else {
+            offerETALabel.text = "N/A"
+        }
         if let priceRange = offer.estimatedPrice?.range{
             offerPriceLabel.text = "\(priceRange.lowerBound) - \(priceRange.upperBound)$"
         }

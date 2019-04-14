@@ -86,15 +86,15 @@ extension RideStatusServiceImpl: HereSDKDemandRidesUpdatesDelegate {
         let rideId = ride.rideId
 
         debugPrint("SDK Ride \(rideId) updated status: \(statusLog.currentStatus.rawValue) at \(statusLog.lastUpdateTime)")
-        
+
         observers(for: rideId).forEach {observer in
             DispatchQueue.main.async {
                 observer.didUpdateStatus(for: ride)
             }
         }
-        
+
     }
-    
+
     func didReceive(_ location: HereSDKDemandRideLocation!, for ride: HereSDKDemandRide!) {
         guard let location = location else { return }
 

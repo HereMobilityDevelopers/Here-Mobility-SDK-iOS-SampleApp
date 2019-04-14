@@ -68,7 +68,7 @@ extension RideDetailsViewController{
 
     // creates ride offers request from origin & destination HereSDKGeocodeResult ,HereSDKDemandPriceRange ,HereSDKDemandBookingConstraints
     func hereSDKRouteRequestFor(originGeocodeResult : HereSDKGeocodeResult, destinationGeocodeResult : HereSDKGeocodeResult, originAddressData : HereSDKAddressData, destinationAddressData : HereSDKAddressData) -> HereSDKDemandRideOffersRequest{
-        
+
         let demandRoute = getDemandRoute(originGeocodeResult: originGeocodeResult, destinationGeocodeResult: destinationGeocodeResult, originAddressData: originAddressData, destinationAddressData: destinationAddressData)
         // example of HereSDKDemandPriceRange
         let priceRange =  HereSDKDemandPriceRange(upperBound: 50.0, lowerBound: 10.0, currency: "USD")
@@ -76,7 +76,15 @@ extension RideDetailsViewController{
         // example of hereSDKDemandTransitOptions - optional
         let demandTransitOptions = HereSDKDemandTransitOptions(maxTransfers: NSNumber(value : 3), maxWalkingDistance: NSNumber(value : 2000), locale: nil)
 
-        return HereSDKDemandRideOffersRequest.rideOffers(with: demandRoute, constraints: self.getBookingConstraints(), prebookPickupTime: self.bookNowCell.on ? Date() : self.prebookRideDate!, priceRange: priceRange, sortType: .unknown, passengerNote: "", transitOptions: demandTransitOptions)
+        let rideOffersRequest = HereSDKDemandRideOffersRequest(route: demandRoute)
+        rideOffersRequest.constraints = self.getBookingConstraints()
+        if self.bookNowCell.on, let prebookRideDate = self.prebookRideDate {
+            rideOffersRequest.prebookPickupTime = prebookRideDate
+        }
+        rideOffersRequest.priceRange = priceRange
+        rideOffersRequest.transitOptions = demandTransitOptions
+
+        return rideOffersRequest
     }
 
     /// returns demand ride booking constraint object

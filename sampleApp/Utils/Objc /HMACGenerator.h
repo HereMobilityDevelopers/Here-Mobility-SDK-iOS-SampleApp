@@ -6,6 +6,6 @@
 
 @interface HMACGenerator : NSObject
 
-+ (NSString *)hmacSHA256From:(NSString*)appKey userId:(NSString *)userId expiration:(int32_t)expiration withKey:(NSString *)key;
+ + (NSString *)hmacSHA384From:(NSString*)appKey creationTimeSec:(int32_t)creationTimeSec withKey:(NSString *)key;
 
 @end
