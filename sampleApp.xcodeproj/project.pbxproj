@@ -113,7 +113,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3711734C094D0F0C3A3ECD74 /* Products */ = {
+		4E4F3D8F4290804F9DDCBE27 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -177,7 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				F2D1C3EC208E17B7003388A2 /* sampleApp */,
-				3711734C094D0F0C3A3ECD74 /* Products */,
+				4E4F3D8F4290804F9DDCBE27 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -342,7 +342,7 @@
 				Base,
 			);
 			mainGroup = F2D1C3E1208E17B7003388A2;
-			productRefGroup = 3711734C094D0F0C3A3ECD74 /* Products */;
+			productRefGroup = 4E4F3D8F4290804F9DDCBE27 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
