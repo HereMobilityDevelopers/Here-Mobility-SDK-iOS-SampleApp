@@ -29,8 +29,9 @@ class LaunchScreenViewController: UIViewController {
         HereSDKManager.shared?.authenticateApplication(HereSDKApplicationAuthenticationInfo(creationTime: creationTime, verificationHash: hashString), withHandler:{ [weak self] (error) in
             if let error = error{
                 UIAlertController.show("Login fail \(error.localizedDescription)", from: self)
+            } else {
+                self?.performSegue(withIdentifier: String(describing: GetRidesViewController.self), sender: self)
             }
-            self?.performSegue(withIdentifier: String(describing: GetRidesViewController.self), sender: self)
         })
     }
 }

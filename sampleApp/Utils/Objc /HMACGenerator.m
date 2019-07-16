@@ -3,24 +3,34 @@
 
 @implementation HMACGenerator
 
- + (NSString *)hmacSHA384From:(NSString*)appKey creationTimeSec:(int32_t)creationTimeSec withKey:(NSString *)key;
++ (NSString *)hmacSHA384From:(NSString*)appKey creationTimeSec:(int32_t)creationTimeSec withKey:(NSString *)key;
 {
     NSString *appKey64 = [HMACGenerator base64forData:[appKey dataUsingEncoding:NSUTF8StringEncoding]];
-    NSString *creation = [NSString stringWithFormat:@"%d",creationTimeSec];
+    NSString *cre = [NSString stringWithFormat:@"%d",creationTimeSec];
 
-    NSString *data = [NSString stringWithFormat:@"%@.%@",appKey64,creation];
+    NSString *data = [NSString stringWithFormat:@"%@.%@",appKey64,cre];
 
     NSData *hash = [HMACGenerator hmacSHA384:data withKey:key];
 
-    NSString *hashStr = hash.description;
-    NSCharacterSet *trim = [NSCharacterSet characterSetWithCharactersInString:@"<> "];
-    NSString *result = [[hashStr componentsSeparatedByCharactersInSet:trim] componentsJoinedByString:@""];
-
-    return result;
+    return [HMACGenerator stringOfBytesFromData:hash];
 }
 
++ (NSString *)stringOfBytesFromData:(NSData*)data
+{
+    uint8_t *bytes = (uint8_t*)data.bytes;
+    NSUInteger size = data.length;
 
- + (NSData *)hmacSHA384:(NSString*)data withKey:(NSString *)key
+    NSMutableString *result = [NSMutableString stringWithCapacity:size];
+
+    for (int i = 0; i < size; i++)
+    {
+        [result appendString:[NSString stringWithFormat:@"%02lx", (unsigned long)bytes[i]]];
+    }
+
+    return [result copy];
+}
+
++ (NSData *)hmacSHA384:(NSString*)data withKey:(NSString *)key
 {
     const char *cKey = [key cStringUsingEncoding:NSASCIIStringEncoding];
     const char *cData = [data cStringUsingEncoding:NSASCIIStringEncoding];

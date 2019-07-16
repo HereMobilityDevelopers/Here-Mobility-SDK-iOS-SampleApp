@@ -113,7 +113,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		376AF36F86632F44E5DC7794 /* Products */ = {
+		4F2F3C014EBEFD9F48940DBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -177,7 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				F2D1C3EC208E17B7003388A2 /* sampleApp */,
-				376AF36F86632F44E5DC7794 /* Products */,
+				4F2F3C014EBEFD9F48940DBB /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -342,7 +342,7 @@
 				Base,
 			);
 			mainGroup = F2D1C3E1208E17B7003388A2;
-			productRefGroup = 376AF36F86632F44E5DC7794 /* Products */;
+			productRefGroup = 4F2F3C014EBEFD9F48940DBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -372,7 +372,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-sampleApp/Pods-sampleApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-sampleApp/Pods-sampleApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${PODS_ROOT}/HereSDKCoreKit/Frameworks/HereSDKCoreKit.framework",
 				"${PODS_ROOT}/HereSDKDemandKit/Frameworks/HereSDKDemandKit.framework",
@@ -399,7 +399,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sampleApp/Pods-sampleApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sampleApp/Pods-sampleApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FE45E5D423007A0C37014BD2 /* [CP] Check Pods Manifest.lock */ = {
